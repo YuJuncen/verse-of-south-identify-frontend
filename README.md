@@ -19,6 +19,7 @@ the extent permitted by applicable law. You can redistribute it
 and/or modify it under the terms of the Do What The Fuck You Want
 To Public License, Version 2, as published by Sam Hocevar. See
 http://www.wtfpl.net/ for more details.  
+
 ---
 这个东西的实现非常粗暴。  
 有许多东西都散发着显著的坏味道并且亟待重构。  
