@@ -1,0 +1,52 @@
+extends layout
+
+block content
+    nav.sticky-top.shadow
+        ol.breadcrumb
+            li.breadcrumb-item.active homepage
+            
+    h1= `${user.uid || user.personal.nickName}'s homepage`
+    div(style={'max-width': '720px'})
+        .card
+            .card-header uid
+            .card-body= user.uid
+        if (user.personal.nickName)
+            .card.mt-4
+                .card-header nickname
+                .card-body= user.personal.nickName
+        if user.personal.emailAddress
+            .card.mt-4
+                .card-header email address
+                .card-body= user.personal.emailAddress.content
+        .card.mt-4
+            .card-header avatar
+            .card-body
+                img.figure-img.img-fluid.rounded(src='' + user.personal.avatar)
+        .card.mt-4
+            .card-header roles
+            ul.list-group.list-group-flush
+                - for(let role of user.roles)
+                    li.list-group-item
+                        h5= role.roleName
+                        p= role.description
+        .card.mt-4
+            .card-header links
+            ol.list-group.list-group-flush
+                li(style={'list-style': 'none'})
+                    a.list-group-item.list-group-item-action.text-secondary(href="/user/personal?uid=" + encodeURIComponent(user.uid)) personal
+                li(style={'list-style': 'none'})
+                    a.list-group-item.list-group-item-action.text-secondary(href='/role') role
+                li(style={'list-style': 'none'})
+                    a.list-group-item.list-group-item-action.text-secondary(href='/') sign out
+                li(style={'list-style': 'none'})
+                    a.list-group-item.list-group-item-action.text-secondary(href="/user/password/" + user.uid) change password
+    hr
+    code
+        pre(style={'max-width': '700px', background: '#333', 'font-weight': 'bold',
+            'font-family': 'Source Code Pro', color: '#eee', padding: "16px 8px", 
+            'border-radius': '4px'})
+            = 'fields: ' + Object.keys(user)
+            = '\n'
+            = 'HALs: \n'
+            = JSON.stringify(user._links, 2, 2)
+        

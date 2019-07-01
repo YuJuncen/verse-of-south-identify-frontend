@@ -1,0 +1,19 @@
+@charset "UTF-8";
+.oneline {
+  margin-bottom: 8px;
+  display: flex; }
+  .oneline label {
+    font-family: 'Menlo', monospace;
+    font-size: 1.5em;
+    margin-right: 8px;
+    flex-grow: 1; }
+  .oneline input {
+    padding: 16px 8px;
+    font-size: 1.2em;
+    font-family: '宋体', sans-serif;
+    flex-grow: 2;
+    width: 100%; }
+  .oneline button {
+    width: 100%; }
+
+/*# sourceMappingURL=index.css.map */

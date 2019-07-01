@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  link(rel='stylesheet', href='/stylesheets/index.css')
+  h1= `login to ${title}`
+  form#login-form(style={'max-width': '400px'})
+    - if (user)
+      .alert.alert-info
+        h4= `current user: ${user.uid}`
+        p You can sign in with another account, and your current account will log out.
+        a(href="/user") #[em take me back to my homepage!]
+    br
+    .form-group
+      label(for='username')= 'UID'
+      input.form-control#username(type='text', name='username')
+    .form-group
+      label(for='password')= 'password'
+      input.form-control#password(type='password', name='password')
+    .d-flex
+      button.flex-fill.mr-4.btn.btn-primary submit
+      a.flex-fill.btn.btn-secondary(href='/register') register
+    - if(error)
+      .alert.alert-danger.mt-4
+        = `${error}`
+        

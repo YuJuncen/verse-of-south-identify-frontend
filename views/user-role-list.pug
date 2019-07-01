@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    nav.sticky-top.shadow
+        ol.breadcrumb
+            li.breadcrumb-item
+                a(href="/user") homepage
+            li.breadcrumb-item
+                a(href="/role") role list
+            li.breadcrumb-item.active select a user
+    h1= 'User role manage'
+    div(style={'max-width': '720px'})
+        table.table.table-bordered
+            thead.thead-light
+                tr
+                    th uid
+                    th roles
+                    th operation
+            tbody
+                each user in users
+                    tr
+                        td= user.uid
+                        td= '[' + user.roles.map(role => role.roleName).join(', ') + ']'
+                        td
+                            a(href=`/role/mgr/` + encodeURIComponent(user.uid))
+                                ='管理'
+        ul.pagination
+            - for (let i = Math.max(0, pageInfo.number - 1); i < Math.min(pageInfo.number + 5, pageInfo.totalPages) ; i++)
+                li.page-item(class={'active': i === pageInfo.number})
+                    a.page-link(href=`/role/mgr?page=${i}`)= i + 1
+            li.page-item.disabled
+                a.page-link(href='#')= `current ${pageInfo.number + 1} total ${pageInfo.totalPages}`
+        

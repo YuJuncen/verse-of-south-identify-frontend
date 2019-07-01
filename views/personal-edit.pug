@@ -1,0 +1,40 @@
+extends layout
+
+block content
+    nav.sticky-top.shadow-sm
+        ol.breadcrumb
+            li.breadcrumb-item
+                a(href="/user") homepage
+            li.breadcrumb-item.active personal edit
+    script.
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('#avatar-upload').addEventListener('change', (e) => {
+                const url = URL.createObjectURL(e.target.files[0]);
+                document.querySelector('#avatar').src = url;
+            })
+        })
+    h1= 'Edit personal'
+    form(method="POST", encType="multipart/form-data")
+        .form-group
+            label(for='nick-name') nickname
+            input.form-control#nick-name(value=user.personal.nickName, name='nick-name')
+        .form-group
+            label(for='email-address') email
+            input.form-control#email-address(name='emailAddress', type='email', value=user.personal.emailAddress ? user.personal.emailAddress.content : '')
+        .form-group
+            br
+            .card
+                .card-header avatar
+                img#avatar(style='max-width: 720px')
+                .card-body
+                    .custom-file
+                        input.custom-file-input.form-control#avatar-upload(accept='.png, .jpg, .hiff', type='file', name='avatar')
+                        label.custom-file-label(for='avatar') choice a file...
+        button.btn.btn-primary(style={width:'100%'})= 'submit'
+    br
+    - if(infomation)
+        .alert.alert-primary
+            span= infomation
+    - if(error)
+        .alert.alert-danger
+            span= error

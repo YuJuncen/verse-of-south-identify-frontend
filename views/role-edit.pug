@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    nav.sticky-top.shadow
+        ol.breadcrumb
+            li.breadcrumb-item
+                a(href="/user") homepage
+            li.breadcrumb-item.active role list
+    h1 Role manage
+    .card
+        .card-header existed roles
+        .list-group.list-group-flush
+            each role in roles
+                .list-group-item= `${role.roleName}`
+
+    form(method="POST")
+        .card.mt-4
+            .card-header add role
+            ul.list-group.list-group-flush
+                li.list-group-item
+                    label(for='role-name') role name
+                    input.form-control#role-name(type="text", name='roleName', required)
+                    br
+                    .input-group
+                        .input-group-prepend
+                            span.input-group-text= 'Description'
+                        textarea.form-control#desc(name='description')
+                button(type='submit').list-group-item.list-group-item-action.bg-primary.text-white add role!
+    
+    .card.mt-4
+        .card-header links
+        ul.list-group.list-group-flush
+        a(href="/role/mgr").list-group-item.list-group-item-action manage user's role.
