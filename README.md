@@ -12,8 +12,8 @@ npm start
 如果真的打算使用这个（！），注意处理一下这些东西。
 
 ## 注意
-**这个软件不提供任何保证，它没有任何期望行为，所有的文档和测试都是瞎*儿编的；如果他们恰好和软件的行为一致了，那也不过是巧合。**
-**但是它们的功能确实在我心中。**
+**这个软件不提供任何保证，它没有任何期望行为，所有的文档和测试都是瞎*儿编的；如果他们恰好和软件的行为一致了，那也不过是巧合。**  
+**但是它们的功能确实在我心中。**  
 This program is free software. It comes without any warranty, to
 the extent permitted by applicable law. You can redistribute it
 and/or modify it under the terms of the Do What The Fuck You Want
